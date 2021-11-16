@@ -276,7 +276,7 @@ export default class CharacterEmbeds {
             .setColor(SettingsConstants.COLORS.BAD)
             .setImage(CharacterConstants.CHARACTER_DIED_IMAGE)
             .setTitle(`RIP ${character.GetName()}\n${character.GetBornDateString()} - ${character.GetDeathDateString()}`)
-            .setDescription('--------------------')
+            .setDescription('Death Message', character.GetDeathMessageString(), true)
             .addField('Level', character.GetLevel(), true)
             .addField('XP', character.GetXP(), true);
 
