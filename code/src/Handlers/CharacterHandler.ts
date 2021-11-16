@@ -1222,7 +1222,22 @@ export default class CharacterHandler {
         MessageService.ReplyMessage(messageInfo, 'De lore van je character is aangepast.', true, true, await CharacterEmbeds.GetCharacterInfoEmbed(character));
 
     }
+    
+    private static async EditDeathMessage(messageInfo: IMessageInfo, player: Player, deathmessage: string) {
+        const character = PlayerManager.GetCharacterFromPlayer(messageInfo, player);
+        if (character == null) {
+            return;
+        }
 
+        if (deathmessage.length > SettingsConstants.LORE_MAX_LENGTH) {
+            MessageService.ReplyMessage(messageInfo, `Je death message mag niet langer dan ${SettingsConstants.LORE_MAX_LENGTH} tekens zijn.`, false);
+            return;
+        }
+
+        await character.UpdateDeathmessage(deathmessage);
+        MessageService.ReplyMessage(messageInfo, `Je death message is aangepast naar ${deathmessage}.`);
+    }
+    
     private static async EditName(messageInfo: IMessageInfo, player: Player, name: string) {
         const character = PlayerManager.GetCharacterFromPlayer(messageInfo, player);
         if (character == null) {
