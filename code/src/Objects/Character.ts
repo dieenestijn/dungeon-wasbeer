@@ -93,7 +93,8 @@ export default class Character {
     private enchantmentDescription: string;
     private perceptionDescription: string;
     private reinforcementDescription: string;
-
+    private deathmessage: string;
+    
     constructor(player?: Player) {
         if (player) {
             this.player = player;
